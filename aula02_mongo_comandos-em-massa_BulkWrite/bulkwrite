@@ -1,0 +1,25 @@
+db.student.bulkWrite([operacao1, operacao2, operacao3...], options)
+
+
+db.student.bulkWrite([ 
+              {insertOne:{
+                  "document" : {name: "Thiago", subject: "matematica", 
+                  type: "prova final", value: 19, Modificacao: new Date()}
+              }},
+              {insertOne:{
+                  "document" : {name: "Donizete", subject: "portugues", 
+                  type: "trabalho pratico", value: 39, Modificacao: new Date()}
+              }},
+              {updateOne:{
+                  "filter" : {name: "Tobby Cao"},
+                  "update" : {$set: {subject: "matematica"}}
+              }},
+              {deleteOne: {
+                  "filter" : {name: "Douglas Vallinhos"}
+              }},
+              {replaceOne:{
+                "filter": {name: "Tobby Cao"},
+                "replacement" : {name: "Tobbynho", subject: "matematica", 
+                type: "trabalho pratico", value: 19, Modificacao: new Date() }
+              }}
+])
