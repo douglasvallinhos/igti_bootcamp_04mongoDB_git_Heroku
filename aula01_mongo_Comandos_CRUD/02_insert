@@ -1,0 +1,15 @@
+db.student.insertOne({name: "Douglas Vallinhos"});  
+
+
+db.student.insertMany(
+  [{name: "Fran Godoy", subject: "matematica", type: "trabalho pratico", value: 15.4}, 
+  {name: "Tobby Cao", subject: "portugues", type: "desafio", value: 25.4}
+  ]);
+
+
+  db.student.insert([{name: "Valdir", subject: "geografia", type: "trabalho pratico", value: 55.4}, 
+  {name: "Stella", subject: "portugues", type: "desafio", value: 65.4}]);
+
+insertOne ->>>> insere apenas um domumento e retorna os ID
+insertMany ->>>> insere varios documentos e retorna OS ID
+insert ->>> insere 1 ou varios, mas nao é muito utilizado nao pois nao retorna ID

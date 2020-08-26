@@ -1,0 +1,33 @@
+db.student.updateOne()
+db.student.updateMany()
+db.student.updateOne(query,update, opcionals)
+db.student.updateMany(query,update, opcionals)
+db.stydent.replaceOne(query, update, opcional)
+
+updateOne ->>>>> faz o update em apenas 1 documento
+updateMany ->>>> faz o update em todos documentos que estejam verdadeiros na query
+replaceOne ->>>> VAI SUBSTITUIR o documento inteiro (todas colunas) que esteja verdadeiro na query
+no exemplo abaixo, utilizamos o ID, e o replaceOne ja apaga tudo desse id, precisamos
+criar novas colunas pra essa inserçao novamente
+
+
+
+db.student.updateOne(
+  {name: "Valdir", subject: "geografia"},
+  {$set: {name: "Valdir Vallinhos"},
+  })
+
+{$set: {name: "Valdir Vallinhos"}, ->>> $set vai alterar o name
+{$inc: {value: 10}, ->>> $inc vai somar o 10 com o valor que ja tiver no documento
+
+
+db.student.updateMany({},{$set:{Modificacao:"$$NOW", timestamp:"$$CLUSTER_TIME"}})
+
+db.student.updateMany({},{$currentDate:{Modificacao:true, timestamp:{$type: "timestamp"}}})
+
+db.student.updateMany({},{$unset:{timestamp:1}})
+
+db.student.replaceOne(
+  {_id: ObjectId("5f448ba3acc24e43735f4256")},
+  {name: "NovoNome", subject: "novaMateria", type: "novoType"}
+)

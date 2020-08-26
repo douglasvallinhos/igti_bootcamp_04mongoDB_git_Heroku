@@ -1,0 +1,10 @@
+ db.help()
+db
+show dbs
+use nomedobanco
+db.dropDatabase()
+db.createCollection("student")
+show collections
+db.students.drop()
+
+

@@ -1,0 +1,61 @@
+
+db.student.find()  -> busca registros
+
+db.student.findOne() -> busca o primeiro registro
+
+db.student.find({query},{projection}) -> podemos passar querys e projections
+para melhorar o nosso filtro.
+
+
+---------------------------- PROJECTION-------------------------------------
+
+db.student.find({}, {_id:0, name: 1, value: 1}) -----> nesse exemplo estamos criando
+um filtro em que os '0' nao vao vir, somente os '1'.
+
+db.student.find({}, {_id:0, name: 1, value: 1}).limit(3) ------> 'limit' e para
+limitar o total de registros que ia retornar.
+
+db.student.find({}, {_id:0, name: 1, value: 1}).limit(3).skip(1) -----> 'skip' é
+para pular o registro, no caso '1' vai pular apenas 1.
+
+db.student.find({}, {_id:0, name: 1, value: 1}).sort({name:1}) -----> nesse exemplo
+vai ordenar em ordem crescente pela propriedade 'name'.
+db.student.find({}, {_id:0, name: 1, value: 1}).sort({name:-1}) -----> se colocar
+'-1' ordena decrescente.
+
+db.student.find().pretty() -----> pretty imprime mais legivel parecido com JSON.
+
+-----------------------------------QUERY--------------------------------------
+
+db.student.find({subject : "portugues"},{}).pretty()
+db.student.find({$and:[{subject : "portugues"},{type : "prova"}]},{}).pretty()
+
+
+db.student.find({subject : "portugues"},{}).pretty() ------> traz somente os
+documentos que tenham subject 'portugues'.
+
+
+
+------operadores logicos--------
+$and (caso1 E caso2 verdadeiros)
+$not (inversao)
+$nor (tudo o que nao estiver nos casos)
+$or(caso1 OU caso2)
+
+db.student.find({$and:[{subject : "portugues"},{type : "prova"}]},{}).pretty() -----> Operador
+ternario $and:[{},{}], pode usar $not, $nor $or
+
+------operadores de comparaçao--------
+$eq (igual)
+$gt (maior)
+$gte (maior ou igual)
+$in
+$lt (menor que)
+$lte (menor ou igual)
+$ne
+$nin (nao pertence)
+
+db.student.find({value: {$gt: 20}},{}).pretty() ->>>> retorna os documentos
+que value for maior que 20
+
+

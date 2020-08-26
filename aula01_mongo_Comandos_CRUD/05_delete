@@ -1,0 +1,5 @@
+db.student.deleteOne()
+db.student.deleteMany()
+
+db.student.deleteOne({name: "NovoNome"})
+db.student.deleteMany({type: "trabalho pratico"})
