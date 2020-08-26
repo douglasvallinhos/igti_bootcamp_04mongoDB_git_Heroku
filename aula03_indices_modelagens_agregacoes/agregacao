@@ -1,0 +1,28 @@
+db.student.aggregate([
+  {$project: {}},
+  {$match: {campo: "x"}},
+  {$group: {_id: "$campo", total: {$sum: "$campo"}}},
+  {$sort: {}},
+  {$skip: N},
+  {$limit: N}
+])
+
+db.student.aggregate([
+  {$match: {subject: "matematica"}},
+  {$group: {_id: null, total: {$sum: "$value"}}}
+])
+
+db.student.aggregate([
+  {$group: {_id: null, total: {$avg: "$value"}}}
+])
+
+
+db.student.aggregate([
+  {$group: {_id: {subject: "$subject"}, total: {$sum: "$value"}}},
+  {$sort : {_id: 1}}
+])
+
+---------------------------------------------------------------------
+db.student.countDocuments({subject: "matematica", value: {$gt: 10}})
+
+db.student.distinct("subject")

@@ -1,0 +1,14 @@
+db.student.getIndexes()
+db.student.createIndex({name: 1})
+db.student.dropIndex("name_-1")    ->>> exclusao pelo nome do indice
+db.student.dropIndex({name: -1})   ->>> exclusao pelo campo do indice
+db.student.dropIndexes(*)          ->>> exclui todos indices exceto _id (padrao)
+
+
+
+db.livros.createIndex({biografia: "text"})
+db.livros.find({$text: {$search: "jornalista escritora"}}, {_id:1, score: {$meta: "textScore"}})
+
+OBS: com esses comandos estamos no campo 'biografia' criando um indice do tipo 'text'
+entao na linha de baixo conseguimos buscar as 'biografias' que contenham as palavras
+jornalista ou escritora
